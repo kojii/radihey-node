@@ -45,7 +45,7 @@ block content
 
 block bottom
   script()
-    socket = io.connect('http://192.168.1.74');
+    socket = io.connect('http://localhost');
     socket.on('connected', function(){
       console.log('connected');
       socket.emit('join', {'room':'room#{roomId}'});
