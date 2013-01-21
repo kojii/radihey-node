@@ -44,9 +44,33 @@ app.configure('development', function(){
     app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
-app.get('/users', user.list);
+server = http.createServer(app);
 
-http.createServer(app).listen(app.get('port'), function(){
+app.get('/:roomId', routes.index);
+
+// Socket.IO
+var io = require('socket.io').listen(server)
+var system = io.sockets.on('connection', function(socket){
+  socket.emit('connected');
+  socket.broadcast.emit('another-connected');
+
+  socket.on('join', function(data){
+    socket.set('room', data.room);
+    socket.to(data.room).emit('message', 'An user added.')
+    socket.join(data.room);
+  });
+
+  socket.on('hey', function(data){
+    var room;
+    socket.get('room', function(err, _room){
+      room = _room;
+    });
+    socket.broadcast.to(room).emit('hey-from-another');
+    console.log('hey to ' + room);
+    //socket.broadcast.emit('hey-from-another');
+  });
+});
+
+server.listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));
 });
