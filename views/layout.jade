@@ -1,0 +1,17 @@
+doctype 5
+html
+  block head
+    head
+      title #{ __i("title") }
+      meta(name='viewport', content='width=device-width, initial-scale=1.0')
+      meta(name='description', content='')
+      meta(name='author', content='')
+      link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    include includes/navbar
+    .container-fluid
+      block content
+      block footer
+        hr
+        footer
+          p &copy; Company 2013
