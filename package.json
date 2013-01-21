@@ -10,6 +10,7 @@
     "jade": "*",
     "less-middleware": "*",
     "mongoose": "*",
+    "socket.io": "*",
     "i18n": "*"
   }
 }
