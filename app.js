@@ -34,8 +34,8 @@ app.configure(function(){
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser('AF940C4E-9B61-4558-8686-E065801A81D7'));
-    app.use(express.csrf());
     app.use(express.session());
+    app.use(express.csrf());
     app.use(i18n.init);
     app.use(app.router);
     app.use(require('less-middleware')({ src: __dirname + '/public', compress: true }));
