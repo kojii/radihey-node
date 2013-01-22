@@ -5,12 +5,22 @@
 
 var express = require('express')
   , routes = require('./routes')
+  , channel = require('./routes/channel')
   , http = require('http')
   , path = require('path')
   , i18n = require('i18n')
   , app = express()
   , server = http.createServer(app)
-  , helpers = require('express-helpers')(app);
+  , helpers = require('express-helpers')(app)
+//tokenを作るメソッド
+  , csrf = function(req, res, next) {
+      //localsがexpress version3以降のhelperです。
+      res.locals.token = req.session._csrf;
+      next();
+  }
+// Socket.IO
+  , io = require('socket.io').listen(server);
+
 
 i18n.configure({
     // setup some locales - other locales default to en silently
@@ -46,18 +56,13 @@ app.configure('development', function(){
     app.use(express.errorHandler());
 });
 
-//tokenを作るメソッド
-var csrf = function(req, res, next) {
-  //localsがexpress version3以降のhelperです。
-  res.locals.token = req.session._csrf;
-  next();
-};
+app.get('/', routes.index);
+app.get('/chs', channel.index);
+app.get('/ch/:cid', channel.show);
+app.get('/chs/new', csrf, channel.new);
+app.get('/ch/:cid/edit', csrf, channel.edit);
+app.post('/chs', channel.create);
 
-
-app.get('/:roomId', routes.index);
-
-// Socket.IO
-var io = require('socket.io').listen(server);
 var system = io.sockets.on('connection', function(socket){
   socket.emit('connected');
   socket.broadcast.emit('another-connected');
