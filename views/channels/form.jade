@@ -1,0 +1,22 @@
+form.form-horizontal(action='/chs', method='post')
+  input(type='hidden', name='_method', value='post')
+  input(type='hidden', name='_csrf', value=token)
+  .control-group
+    label.control-label(for="channel_title") チャンネル名
+    .controls
+      input#channel_title.input-xlarge(type='text', name='channel[title]', value=channel.title)
+  .control-group
+    label.control-label(for="channel_url") URL
+    .controls
+      input#channel_url.input-xlarge(type='text', name='channel[url]', value=channel.url)
+  .control-group
+    label.control-label(for="channel_description") 詳細
+    .controls
+      textarea#channel_description.input-xlarge(type='text', name='channel[description]') #{channel.description}
+  .control-group
+    label.control-label(for="channel_code") コード
+    .controls
+      textarea#channel_code.input-xlarge(type='text', name='channel[code]') #{channel.code}
+  .control-group
+    .controls
+      input.btn.btn-success(type='submit', value='登録')

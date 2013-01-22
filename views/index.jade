@@ -2,51 +2,10 @@ extends layout
 
 block content
   .row-fluid
-    include includes/sidebar
+    .span3
+      include includes/sidebar
     .span9
       .hero-unit.
         <h1>Hello, world!</h1>
             <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
             <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-      .row-fluid
-        .span4
-          h2 Headding
-          p
-            img(id='he-button', src='/images/he-button.png')
-          p.
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          p.btn: a(href='#') View details &raquo;
-        .span4
-          h2 Headding
-          p.
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          p.btn: a(href='#') View details &raquo;
-        .span4
-          h2 Headding
-          p.
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          p.btn: a(href='#') View details &raquo;
-      .row-fluid
-        .span4
-          h2 Headding
-          p.
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          p.btn: a(href='#') View details &raquo;
-        .span4
-          h2 Headding
-          p.
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          p.btn: a(href='#') View details &raquo;
-        .span4
-          h2 Headding
-          p.
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          p.btn: a(href='#') View details &raquo;
-
-block bottom
-  script()
-    socket = io.connect('http://localhost');
-    socket.on('connected', function(){
-      console.log('connected');
-      socket.emit('join', {'room':'room#{roomId}'});
-    });
