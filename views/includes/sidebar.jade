@@ -2,8 +2,8 @@
   .well.sidebar-nav
     ul.nav.nav-list
       li.nav-header Sidebar
-      li.active: a(href='#') Link
-      li: a(href='#') Link
+      li(class="#{roomId == '1' ? 'active':''}"): a(href='/1') チャネル1
+      li(class="#{roomId == '2' ? 'active':''}"): a(href='/2') チャネル2
       li: a(href='#') Link
       li.nav-header Sidebar
       li: a(href='#') Link

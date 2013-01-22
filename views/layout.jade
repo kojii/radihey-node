@@ -7,6 +7,9 @@ html
       meta(name='description', content='')
       meta(name='author', content='')
       link(rel='stylesheet', href='/stylesheets/style.css')
+      script(src='/javascripts/jquery-1.9.0.min.js')
+      script(src='/javascripts/application.js')
+      script(src="/socket.io/socket.io.js")
   body
     include includes/navbar
     .container-fluid
@@ -15,3 +18,4 @@ html
         hr
         footer
           p &copy; Company 2013
+    block bottom

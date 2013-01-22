@@ -10,6 +10,8 @@
     "jade": "*",
     "less-middleware": "*",
     "mongoose": "*",
-    "i18n": "*"
+    "socket.io": "*",
+    "i18n": "*",
+    "express-helpers" : "*"
   }
 }

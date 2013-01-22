@@ -1,8 +1,5 @@
 extends layout
 
-append head
-  script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js')
-
 block content
   .row-fluid
     include includes/sidebar
@@ -14,6 +11,8 @@ block content
       .row-fluid
         .span4
           h2 Headding
+          p
+            img(id='he-button', src='/images/he-button.png')
           p.
             Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
           p.btn: a(href='#') View details &raquo;
@@ -43,3 +42,11 @@ block content
           p.
             Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
           p.btn: a(href='#') View details &raquo;
+
+block bottom
+  script()
+    socket = io.connect('http://localhost');
+    socket.on('connected', function(){
+      console.log('connected');
+      socket.emit('join', {'room':'room#{roomId}'});
+    });
