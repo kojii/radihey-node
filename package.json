@@ -11,6 +11,7 @@
     "less-middleware": "*",
     "mongoose": "*",
     "socket.io": "*",
-    "i18n": "*"
+    "i18n": "*",
+    "express-helpers" : "*"
   }
 }
