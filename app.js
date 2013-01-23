@@ -62,6 +62,7 @@ app.get('/ch/:cid', channel.show);
 app.get('/chs/new', csrf, channel.new);
 app.get('/ch/:cid/edit', csrf, channel.edit);
 app.post('/chs', channel.create);
+app.put('/ch/:cid/update', channel.update);
 
 var system = io.sockets.on('connection', function(socket){
   socket.emit('connected');
@@ -73,14 +74,52 @@ var system = io.sockets.on('connection', function(socket){
     socket.join(data.room);
   });
 
-  socket.on('hey', function(data){
+  socket.on('he', function(data){
     var room;
     socket.get('room', function(err, _room){
       room = _room;
     });
-    socket.broadcast.to(room).emit('hey-from-another');
-    console.log('hey to ' + room);
-    //socket.broadcast.emit('hey-from-another');
+    socket.broadcast.to(room).emit('he-from-another');
+  });
+
+  socket.on('warai', function(data){
+    var room;
+    socket.get('room', function(err, _room){
+      room = _room;
+    });
+    socket.broadcast.to(room).emit('warai-from-another');
+  });
+
+  socket.on('un', function(data){
+    var room;
+    socket.get('room', function(err, _room){
+      room = _room;
+    });
+    socket.broadcast.to(room).emit('un-from-another');
+  });
+
+  socket.on('oh', function(data){
+    var room;
+    socket.get('room', function(err, _room){
+      room = _room;
+    });
+    socket.broadcast.to(room).emit('oh-from-another');
+  });
+
+  socket.on('iine', function(data){
+    var room;
+    socket.get('room', function(err, _room){
+      room = _room;
+    });
+    socket.broadcast.to(room).emit('iine-from-another');
+  });
+
+  socket.on('e', function(data){
+    var room;
+    socket.get('room', function(err, _room){
+      room = _room;
+    });
+    socket.broadcast.to(room).emit('e-from-another');
   });
 });
 

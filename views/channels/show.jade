@@ -1,53 +1,30 @@
 extends ../layout
 
 block content
-  .row-fluid
+  .row-fluid#show
     .span3
       include ../includes/sidebar
-    .span9
-      .hero-unit.
-        <h1>Hello, world!</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-            <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    .span9.main
+      .hero-unit
+        h1.channel-title #{channel.title}
+        p.channel-description #{channel.description}
+        .player
+          !{channel.code}
       .row-fluid
-        .span4
-          h2 Headding
-          p
-            img(id='he-button', src='/images/he-button.png')
-          p.
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          p.btn: a(href='#') View details &raquo;
-        .span4
-          h2 Headding
-          p.
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          p.btn: a(href='#') View details &raquo;
-        .span4
-          h2 Headding
-          p.
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          p.btn: a(href='#') View details &raquo;
-      .row-fluid
-        .span4
-          h2 Headding
-          p.
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          p.btn: a(href='#') View details &raquo;
-        .span4
-          h2 Headding
-          p.
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          p.btn: a(href='#') View details &raquo;
-        .span4
-          h2 Headding
-          p.
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          p.btn: a(href='#') View details &raquo;
+        .span12
+          .buttons
+            p
+              img(id='he-button', class='button', src='/images/he-button.png')
+              img(id='warai-button', class='button', src='/images/he-button.png')
+              img(id='un-button', class='button', src='/images/he-button.png')
+              img(id='oh-button', class='button', src='/images/he-button.png')
+              img(id='iine-button', class='button', src='/images/he-button.png')
+              img(id='e-button', class='button', src='/images/he-button.png')
 
 block bottom
   script
     socket = io.connect('http://localhost');
-    socket.on('connected', function(){
+    socket.on('connected', function(data){
       console.log('connected');
       socket.emit('join', {'room':'room#{cid}'});
     });

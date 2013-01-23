@@ -1,7 +1,7 @@
 .well.sidebar-nav
   ul.nav.nav-list
-    li.nav-header #{__i('channel')}
+    li.nav-header.channel-list #{__i('channel')}
     each ch in channels
-      li(class=(typeof cid != 'undefined' && cid == ch.id) ? 'active':''): a(href='/ch/#{ch.id}') #{ch.title}
+      li(class=(typeof cid != 'undefined' && cid == ch.id) ? 'active channel':'channel'): a(href='/ch/#{ch.id}') #{ch.title}
 
 

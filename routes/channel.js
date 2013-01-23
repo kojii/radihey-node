@@ -43,3 +43,12 @@ exports.create = function(req, res) {
     ch.save();
     res.redirect("/chs");
 }
+
+exports.update = function(req, res) {
+  console.log(req.body.channel);
+  UstreamChannel.find(function(err, channels) {
+    UstreamChannel.findByIdAndUpdate(req.params.cid, req.body.channel, function(err, channel) {
+      res.redirect('ch/'+channel.id);
+    });
+  });
+}

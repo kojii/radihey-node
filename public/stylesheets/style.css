@@ -1027,3 +1027,7 @@ a.label:hover,a.badge:hover{color:#ffffff;text-decoration:none;cursor:pointer;}
 .sidebar-nav{padding:9px 0;}
 a{color:#00B7FF;}
 #index p{color:#666;}
+#show .buttons{max-width:800px;padding:0 40px;}#show .buttons p{text-align:center;}
+#show .buttons .button{width:30%;margin:1%;max-width:250px;}
+@media (max-width:768px){#show .hero-unit{padding:20px 40px;margin-bottom:10px;}#show .hero-unit .channel-title{font-size:2em;} #show .player{display:none;} #show .buttons{padding:0;}}@media (max-width:360px){#show .hero-unit{padding:20px;margin-bottom:5px;}#show .hero-unit .channel-title{font-size:1.4em;} #show .hero-unit .channel-description{font-size:1em;} #show .buttons .button{width:46%;}}
+@media (max-width:979px){body{padding-top:0;}}@media (max-width:768px){.sidebar-nav .channel{display:none;}.sidebar-nav .channel.visible{display:block;}}

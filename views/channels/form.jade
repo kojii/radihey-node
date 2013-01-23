@@ -1,5 +1,5 @@
-form.form-horizontal(action='/chs', method='post')
-  input(type='hidden', name='_method', value='post')
+form.form-horizontal(action='#{ channel.isNew ? "/chs" : "/ch/"+channel.id+"/update"}', method='post')
+  input(type='hidden', name='_method', value='#{ channel.isNew ? "post" : "put"}')
   input(type='hidden', name='_csrf', value=token)
   .control-group
     label.control-label(for="channel_title") チャンネル名
