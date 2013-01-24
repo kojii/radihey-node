@@ -7,9 +7,5 @@
         span.icon-bar
       a.brand(href='/') #{ __i('title') }
       .nav-collapse.collapse
-        p.navbar-text.pull-right Logged in as
-          a.navbar-link(href='/'): Username
-        ul.nav
-          li.active: a(href='/'): Home
-          li: a(href='#about'): About
-          li: a(href='#contact'): Contact
+        p.navbar-text.pull-right
+          a(href='/chs/new') #{__i('new-channel')}

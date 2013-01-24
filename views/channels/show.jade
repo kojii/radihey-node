@@ -5,22 +5,22 @@ block content
     .hero-unit
       h1.channel-title #{channel.title}
       p.channel-description #{channel.description}
+      p #{__i('currently')}
+        span.num-listeners
+        span.listening #{__i('listening')}
       .player
         !{channel.code}
-    .row-fluid
-      .span12
-        .buttons
-          p
-            img(id='he-button', class='button', src='/images/he-button.png')
-            img(id='warai-button', class='button', src='/images/he-button.png')
-            img(id='un-button', class='button', src='/images/he-button.png')
-            img(id='oh-button', class='button', src='/images/he-button.png')
-            img(id='iine-button', class='button', src='/images/he-button.png')
-            img(id='e-button', class='button', src='/images/he-button.png')
+      .buttons
+        p
+          img(id='he-button', class='button', src='/images/he-button.png')
+          img(id='warai-button', class='button', src='/images/he-button.png')
+          img(id='un-button', class='button', src='/images/he-button.png')
+          img(id='oh-button', class='button', src='/images/he-button.png')
+          img(id='iine-button', class='button', src='/images/he-button.png')
+          img(id='e-button', class='button', src='/images/he-button.png')
 
 block bottom
   script
     socket.on('connected', function(data){
-      console.log('connected');
       socket.emit('join', {'room':'room#{cid}'});
     });

@@ -12,33 +12,51 @@ a {
   color: #00B7FF;
 }
 
-.main {
-  .buttons {
-    max-width: 800px;
-    padding: 0 40px;
-    p {
-      text-align: center;
+#index {
+  section.channels-available {
+    margin: 20px 0;
+    h1 {
+      font-size: 1em;
+    }
+    .channel-list {
+      list-style: none;
     }
   }
-  .button {
-    width: 30%;
-    margin: 1%;
-    max-width: 250px;
-    cursor: pointer;
+}
+
+.main {
+  .hero-unit {
+    padding: 40px 60px;
+    .service-title,
+    .channel-title {
+      font-size: 2em;
+    }
+    .buttons {
+      max-width: 480px;
+      p {
+        text-align: center;
+      }
+    }
+    .player {
+      margin: 0 0 10px 0;
+    }
+    .button {
+      width: 30%;
+      margin: 1%;
+      max-width: 250px;
+      cursor: pointer;
+    }
   }
   @media (max-width: 768px) {
     .hero-unit {
       padding: 20px 40px;
       margin-bottom: 10px;
-      .channel-title {
-        font-size: 2em;
+      .player {
+        display: none;
       }
-    }
-    .player {
-      display: none;
-    }
-    .buttons {
-      padding: 0;
+      .buttons {
+        padding: 0;
+      }
     }
   }
   @media (max-width: 360px) {
@@ -51,9 +69,9 @@ a {
       .channel-description {
         font-size: 1em;
       }
-    }
-    .button {
-      width: 46%;
+      .button {
+        width: 46%;
+      }
     }
   }
 }
