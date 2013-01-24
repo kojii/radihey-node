@@ -38,6 +38,9 @@ $(function(){
     socket.emit('he');
     new Audio(StHe).play();
   });
+  $('#sample-he-button').bind('click', function(){
+    new Audio(StHe).play();
+  });
   // 自分が「（笑）」ボタンを押した
   $('#warai-button').bind('click', function(){
     socket.emit('warai');

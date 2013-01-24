@@ -12,24 +12,19 @@ a {
   color: #00B7FF;
 }
 
-#index {
-  p {
-    color: #666;
-  }
-}
-
-#show {
+.main {
   .buttons {
     max-width: 800px;
     padding: 0 40px;
     p {
       text-align: center;
     }
-    .button {
-      width: 30%;
-      margin: 1%;
-      max-width: 250px;
-    }
+  }
+  .button {
+    width: 30%;
+    margin: 1%;
+    max-width: 250px;
+    cursor: pointer;
   }
   @media (max-width: 768px) {
     .hero-unit {
@@ -57,10 +52,8 @@ a {
         font-size: 1em;
       }
     }
-    .buttons {
-      .button {
-        width: 46%;
-      }
+    .button {
+      width: 46%;
     }
   }
 }
