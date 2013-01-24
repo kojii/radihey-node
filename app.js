@@ -64,14 +64,43 @@ app.get('/ch/:cid/edit', csrf, channel.edit);
 app.post('/chs', channel.create);
 app.put('/ch/:cid/update', channel.update);
 
+var num_listeners = {};
+
 var system = io.sockets.on('connection', function(socket){
   socket.emit('connected');
-  socket.broadcast.emit('another-connected');
 
+  // join
   socket.on('join', function(data){
-    socket.set('room', data.room);
-    socket.to(data.room).emit('message', 'An user added.');
-    socket.join(data.room);
+    if (data.room) {
+      socket.set('room', data.room);
+
+      var room;
+      socket.get('room', function(err, _room){
+        room = _room;
+      });
+      if (!num_listeners[room]) { num_listeners[room] = 0 }
+      num_listeners[room]++;
+
+      socket.to(room).emit('joined', {num_listeners: num_listeners[room]})
+      socket.broadcast.to(room).emit('another-connected', {num_listeners: num_listeners[room], room: room});
+      socket.join(room);
+    }
+  });
+
+  // disconnect
+  socket.on('disconnect', function(data){
+    var room;
+    socket.get('room', function(err, _room){
+      room = _room;
+    });
+    console.log('disconnect: ' + room);
+    if (num_listeners[room] <= 1) {
+      delete num_listeners[room]
+    } else {
+      num_listeners[room]--;
+    }
+    console.log('num_listeners: ' + num_listeners[room]);
+    socket.broadcast.to(room).emit('another-disconnected', {num_listeners: num_listeners[room]});
   });
 
   socket.on('he', function(data){

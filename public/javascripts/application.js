@@ -93,9 +93,19 @@ $(function(){
   socket.on('e-from-another', function(){
     new Audio(StE).play();
   });
+
+  // 自分が接続した
+  socket.on('joined', function(data){
+    $('.num-listeners').html(data.num_listeners);
+  });
+
   // 他のユーザが接続した
-  socket.on('another-connected', function(){
-    console.log('Another user has been connected.');
+  socket.on('another-connected', function(data){
+    $('.num-listeners').html(data.num_listeners);
+  });
+  // 他のユーザが切断した
+  socket.on('another-disconnected', function(data){
+    $('.num-listeners').html(data.num_listeners);
   });
 
   // UI for Tablet and Phone.

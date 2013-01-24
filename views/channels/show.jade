@@ -5,6 +5,9 @@ block content
     .hero-unit
       h1.channel-title #{channel.title}
       p.channel-description #{channel.description}
+      p #{__i('currently')}
+        span.num-listeners
+        span.listening #{__i('listening')}
       .player
         !{channel.code}
       .buttons
@@ -19,6 +22,5 @@ block content
 block bottom
   script
     socket.on('connected', function(data){
-      console.log('connected');
       socket.emit('join', {'room':'room#{cid}'});
     });
