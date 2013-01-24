@@ -22,5 +22,5 @@ html
         footer
           p &copy; Radihey 2013
     script
-      socket = io.connect('http://localhost');
+      socket = io.connect('http://#{ process.env.HOST || "localhost"}');
     block bottom
