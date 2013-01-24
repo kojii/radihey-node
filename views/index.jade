@@ -3,6 +3,12 @@ extends layout
 block content
   .span9.main#index
     .hero-unit
-      h1 #{__i('title')}
-      p #{__i('service-description')}
-      img(id='sample-he-button', class='button', src='/images/he-button.png')
+      section.summary
+        h1 #{__i('title')}
+        p #{__i('service-description')}
+        img(id='sample-he-button', class='button', src='/images/he-button.png')
+      section.channels-available
+        h1 #{__i('channels-available')}
+        ul.channel-list
+          each ch in channels
+            li(class='channel'): a(href='/ch/#{ch.id}') #{ch.title}

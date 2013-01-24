@@ -40,15 +40,34 @@ exports.edit = function(req, res) {
 exports.create = function(req, res) {
     console.log(req.body.channel);
     var ch = new UstreamChannel(req.body.channel);
-    ch.save();
-    res.redirect("/chs");
+    ch.save(function(err){
+      if (err) {
+        UstreamChannel.find(function(err, channels) {
+          res.render('channels/new', {
+            channels: channels,
+            channel: ch,
+            token: req.body._csrf
+          });
+        });
+      } else {
+        res.redirect("/chs");
+      }
+    });
 }
 
 exports.update = function(req, res) {
   console.log(req.body.channel);
   UstreamChannel.find(function(err, channels) {
     UstreamChannel.findByIdAndUpdate(req.params.cid, req.body.channel, function(err, channel) {
-      res.redirect('ch/'+channel.id);
+      if (err) {
+        res.render('/ch'+channel.id+'/edit', {
+          channels: channels,
+          channel: channel,
+          token: req.body._csrf
+        });
+      } else {
+        res.redirect('/ch/'+channel.id);
+      }
     });
   });
 }
