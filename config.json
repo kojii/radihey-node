@@ -3,5 +3,8 @@
   "npm": true,
   "main": "app.js",
   "args": [],
-  "envs": {}
+  "envs": {
+      "HOST": "radihey.c.node-ninja.com",
+      "PORT": 80
+  }
 }
