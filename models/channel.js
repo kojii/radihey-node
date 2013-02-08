@@ -5,7 +5,7 @@ var mongoose = require('mongoose')
   , Timestamps = require('./timestamps')
   , Extends = require('./extends')
   , Schema = mongoose.Schema
-  , db = mongoose.connect("mongodb://heroku_app10506621:rg03r91cg78i0qi9j88rrnnujq@ds037817.mongolab.com:37817/heroku_app10506621");
+  , db = mongoose.connect("mongodb://heroku_app11694290:iqcjfn8kj0gbkuqigp1p9pme5j@ds037997.mongolab.com:37997/heroku_app11694290");
 
 var Channel = new Schema({
     title: { type: String, required: true },

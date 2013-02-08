@@ -4,7 +4,7 @@
   "main": "app.js",
   "args": [],
   "envs": {
-      "HOST": "radihey.c.node-ninja.com",
-      "PORT": 80
+      "HOST": "ec2-54-249-149-239.ap-northeast-1.compute.amazonaws.com",
+      "PORT": 3000
   }
 }
