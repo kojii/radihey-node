@@ -4,7 +4,6 @@
   "main": "app.js",
   "args": [],
   "envs": {
-      "HOST": "ec2-54-249-149-239.ap-northeast-1.compute.amazonaws.com",
-      "PORT": 3000
+    "PORT": 3030
   }
 }

@@ -36,7 +36,7 @@ app.locals({
 });
 
 app.configure(function(){
-    app.set('port', process.env.PORT || 3000);
+    app.set('port', process.env.PORT || 3030);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
     app.use(express.favicon());
@@ -103,53 +103,14 @@ var system = io.sockets.on('connection', function(socket){
     socket.broadcast.to(room).emit('another-disconnected', {num_listeners: num_listeners[room]});
   });
 
-  socket.on('he', function(data){
+  socket.on('pushed-button', function(data){
     var room;
     socket.get('room', function(err, _room){
       room = _room;
     });
-    socket.broadcast.to(room).emit('he-from-another');
+    socket.broadcast.to(room).emit('another-pushed-button', {'button_id': data['button_id']});
   });
 
-  socket.on('warai', function(data){
-    var room;
-    socket.get('room', function(err, _room){
-      room = _room;
-    });
-    socket.broadcast.to(room).emit('warai-from-another');
-  });
-
-  socket.on('un', function(data){
-    var room;
-    socket.get('room', function(err, _room){
-      room = _room;
-    });
-    socket.broadcast.to(room).emit('un-from-another');
-  });
-
-  socket.on('oh', function(data){
-    var room;
-    socket.get('room', function(err, _room){
-      room = _room;
-    });
-    socket.broadcast.to(room).emit('oh-from-another');
-  });
-
-  socket.on('iine', function(data){
-    var room;
-    socket.get('room', function(err, _room){
-      room = _room;
-    });
-    socket.broadcast.to(room).emit('iine-from-another');
-  });
-
-  socket.on('e', function(data){
-    var room;
-    socket.get('room', function(err, _room){
-      room = _room;
-    });
-    socket.broadcast.to(room).emit('e-from-another');
-  });
 });
 
 server.listen(app.get('port'), function(){
