@@ -5,7 +5,7 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , channel = require('./routes/channel')
+  //, channel = require('./routes/channel')
   , http = require('http')
   , path = require('path')
   , i18n = require('i18n')
@@ -56,13 +56,13 @@ app.configure('development', function(){
     app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
-app.get('/chs', channel.index);
-app.get('/ch/:cid', channel.show);
-app.get('/chs/new', csrf, channel.new);
-app.get('/ch/:cid/edit', csrf, channel.edit);
-app.post('/chs', channel.create);
-app.put('/ch/:cid/update', channel.update);
+//app.get('/', routes.index);
+//app.get('/chs', channel.index);
+//app.get('/ch/:cid', channel.show);
+//app.get('/chs/new', csrf, channel.new);
+//app.get('/ch/:cid/edit', csrf, channel.edit);
+//app.post('/chs', channel.create);
+//app.put('/ch/:cid/update', channel.update);
 
 var num_listeners = {};
 
